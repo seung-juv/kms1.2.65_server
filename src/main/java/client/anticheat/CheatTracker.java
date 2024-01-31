@@ -1,6 +1,6 @@
 /*
  This file is part of the OdinMS Maple Story Server
- Copyright (C) 2008 ~ 2010 Patrick Huy <patrick.huy@frz.cc> 
+ Copyright (C) 2008 ~ 2010 Patrick Huy <patrick.huy@frz.cc>
  Matthias Butz <matze@odinms.de>
  Jan Christian Meyer <vimes@odinms.de>
 
@@ -311,30 +311,6 @@ public class CheatTracker {
             offenses.put(offense, entry);
         } finally {
             wL.unlock();
-        }
-        switch (offense) {
-            case HIGH_DAMAGE_MAGIC:
-            case HIGH_DAMAGE_MAGIC_2:
-            case HIGH_DAMAGE:
-            case HIGH_DAMAGE_2:
-            case ATTACK_FARAWAY_MONSTER:
-            case ATTACK_FARAWAY_MONSTER_SUMMON:
-            case SAME_DAMAGE:
-                gm_message++;
-                if (gm_message % 100 == 0) {
-                    if (chrhardref.getJob() <= 500) {
-                        chrhardref.ServerNotice("오토벤 : " + chrhardref.getName() + "님이 " + chrhardref.getClient().getChannel() + "채널 " + chrhardref.getMap().getMapName() + "에 핵사용으로 제제되었습니다.");
-                        AutobanManager.getInstance().autoban(chrhardref.getClient(), "핵감지로 인하여 오토벤 처리되었습니다.");
-                    }
-                }
-                if (gm_message >= 300 && chrhardref.getLevel() < (offense == CheatingOffense.SAME_DAMAGE ? 175 : 150)) {
-                    final Timestamp created = chrhardref.getClient().getCreated();
-                    long time = System.currentTimeMillis();
-                    if (created != null) {
-                        time = created.getTime();
-                    }
-                }
-                break;
         }
         CheatingOffensePersister.getInstance().persistEntry(entry);
     }
