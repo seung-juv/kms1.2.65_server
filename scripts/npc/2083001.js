@@ -1,6 +1,6 @@
 ﻿/*
 This file is part of the OdinMS Maple Story Server
-Copyright (C) 2008 ~ 2010 Patrick Huy <patrick.huy@frz.cc> 
+Copyright (C) 2008 ~ 2010 Patrick Huy <patrick.huy@frz.cc>
 Matthias Butz <matze@odinms.de>
 Jan Christian Meyer <vimes@odinms.de>
 This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * Location : 240050310 (생명의동굴 - 어둠의 동굴)
  * Location : 240050100 (생명의동굴 - 미로방)
  * Location : 240050000 (생명의동굴 - 동굴 입구)
- * 
+ *
  * @author T-Sun
  *
  */
@@ -44,7 +44,7 @@ function action(mode, type, selection) {
     if (mode == 1) {
         status++;
     }
-    
+
     if (cm.getPlayer().getMapId() == 240050000) {
         if (status == 0) {
             if (cm.getPlayer().getParty() == null) {
@@ -62,11 +62,11 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             }
-            if (cm.getPlayer().getParty().getMembers().size() != 6 && !cm.getPlayer().isGM()) {
-                cm.sendOk("만용을 부리는군. 어리석은 자들이여.. 강한자들과 함께 도전하라.");
-                cm.dispose();
-                return;
-            }
+            // if (cm.getPlayer().getParty().getMembers().size() != 6 && !cm.getPlayer().isGM()) {
+            //     cm.sendOk("만용을 부리는군. 어리석은 자들이여.. 강한자들과 함께 도전하라.");
+            //     cm.dispose();
+            //     return;
+            // }
             cm.sendSimple("겁없이 생명의 동굴로 발을 내딛은 어리석은 자들이여... 숨겨진 열쇠를 찾은 자만이 나에게 다가올 수 있을것이다. 무모한 게임에 도전하겠는가?\r\n\r\n#L0##b도전한다.#k#l")
         } else if (status == 1) {
             var em = cm.getEventManager("HorntailPQ");
@@ -75,7 +75,7 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             }
-            
+
             var prop = em.getProperty("state");
             if (prop.equals("0") || prop == null) {
                 em.startInstance(cm.getParty(), cm.getMap(), 200);
@@ -91,7 +91,7 @@ function action(mode, type, selection) {
             } else {
                 cm.sendOk("이 안에 이미 다른 파티가 입장하여 클리어에 도전중입니다. 잠시 후에 다시 시도해보세요.");
             }
-                
+
             cm.dispose();
         }
     } else if (cm.getPlayer().getMapId() == 240050100) {
