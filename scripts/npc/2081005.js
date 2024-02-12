@@ -29,6 +29,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 var status = -1;
 function action(mode, type, selection) {
+    cm.getMorhphState = function getMorhphState() {
+        return 2210003;
+    }
     if (mode == 1 && type != 1) {
         status++;
     } else {
@@ -43,7 +46,6 @@ function action(mode, type, selection) {
             return;
         }
     }
-    status = 0;
     if (status == 0) {
         if (cm.getMorphState() == 2210003) {
             cm.sendNext("오, 우리 동족이로군. 인간의 침입은 걱정 말라고. 내가 단단히 지키고 있으니까 말이야. 그럼 안으로 들어가게나.")
