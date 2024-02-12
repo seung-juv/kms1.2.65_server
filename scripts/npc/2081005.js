@@ -29,9 +29,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 var status = -1;
 function action(mode, type, selection) {
-    cm.getMorphState = function getMorphState() {
-        return 2210003;
-    }
     if (mode == 1 && type != 1) {
         status++;
     } else {
@@ -46,14 +43,16 @@ function action(mode, type, selection) {
             return;
         }
     }
+    // var morphState = cm.getMorphState();
+    var morphState = 2210003;
     if (status == 0) {
-        if (cm.getMorphState() == 2210003) {
+        if (morphState == 2210003) {
             cm.sendNext("오, 우리 동족이로군. 인간의 침입은 걱정 말라고. 내가 단단히 지키고 있으니까 말이야. 그럼 안으로 들어가게나.")
         } else {
             cm.sendNext("이놈! 인간주제에 여기가 어디라고 왔느냐! 썩 사라져 버려라!");
         }
     } else if (status == 1) {
-        if (cm.getMorphState() == 2210003) {
+        if (morphState == 2210003) {
             cm.warp(240050000, "out00");
             cm.getPlayer().cancelMorphs();
             cm.dispose();
