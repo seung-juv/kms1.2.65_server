@@ -1,6 +1,6 @@
 ﻿/*
 This file is part of the OdinMS Maple Story Server
-Copyright (C) 2008 ~ 2010 Patrick Huy <patrick.huy@frz.cc> 
+Copyright (C) 2008 ~ 2010 Patrick Huy <patrick.huy@frz.cc>
 Matthias Butz <matze@odinms.de>
 Jan Christian Meyer <vimes@odinms.de>
 This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ScriptName : hontale_keroben
  * NPCNameFunc : 케로벤 - 수문장
  * Location : 240040700 (미나르숲 - 생명의 동굴 입구)
- * 
+ *
  * @author T-Sun
  *
  */
@@ -43,6 +43,7 @@ function action(mode, type, selection) {
             return;
         }
     }
+    status = 1;
     if (status == 0) {
         if (cm.getMorphState() == 2210003) {
             cm.sendNext("오, 우리 동족이로군. 인간의 침입은 걱정 말라고. 내가 단단히 지키고 있으니까 말이야. 그럼 안으로 들어가게나.")
